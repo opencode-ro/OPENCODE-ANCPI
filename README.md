@@ -364,10 +364,80 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 
 ------------------------------------------------------------------------------------------
 
-#### Query request status
+#### Webhook request status
 
 <details>
- <summary><code>POST</code> <code><b>{uri}/api/partners/queryRequestStatus</b></code> <code>(query request status)</code></summary>
+ <summary><code>POST</code> <code><b>{uri}</b></code> <code>(webhook update request status)</code></summary>
+
+##### Endpoint
+
+> | Key      | Value               | description                                                           |
+> |-----------|-------------------------|-----------------------------------------------------------------------|
+> | uri      | String  | Provided by Partner  |
+
+
+##### Headers
+
+> | Key      | Value               | description                                                           |
+> |----------|---------------------|-----------------------------------------------------------------------|
+> | Authorization      | Basic Auth or None   | Provided by Partner  |
+
+##### Body
+
+> | name      |  present on request status     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | requestId      | all |   String   | Internal request ID  |
+> | partnerRef      | all |   String   | Partner's unique internal ID of request  |
+> | requestStatus      | all |   String   | Request Status  |
+> | ancpiOrderId | SentToANCPI | String | ANCPI Order ID |
+> | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
+> | docUri      | DoneANCPI,Finalised|   String   | Direct download URI for generated document (present only if generated)  |
+> | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
+
+###### Examples
+###### _* in TEST system, the status update webhooks are generated automatically for all requests with a delay of ~5 seconds inbetween._
+```json
+{
+"requestId": "jrurF1FhZ7nuyYAdy6Xm",
+"partnerRef":  "12345",
+"requestStatus":  "SentToANCPI",
+"ancpiOrderId": "856012",
+"accountBalance": "12"
+}
+```
+```json
+{
+"requestId": "jrurF1FhZ7nuyYAdy6Xm",
+"partnerRef":  "12345",
+"requestStatus":  "DoneANCPI",
+"docUri":  "https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"
+}
+```
+```json
+{
+"requestId": "jrurF1FhZ7nuyYAdy6Xm",
+"partnerRef":  "d5f3af8e",
+"requestStatus":  "Finalised",
+"docUri":  "https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218",
+"ancpiInvoiceUri":  "WALLET"
+}
+```
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`        | Any    |
+
+
+</details>
+
+------------------------------------------------------------------------------------------
+
+#### Query request status *
+
+<details>
+ <summary><code>POST</code> <code><b>{uri}/api/partners/queryRequestStatus</b></code> <code>(query request status - as an async alternative to webhook implementation))</code></summary>
 
 ##### Endpoint
 
