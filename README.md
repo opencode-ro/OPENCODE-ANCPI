@@ -60,6 +60,20 @@ curl -L 'https://$uri/api/partners/searchImobil' \
 > | code      |   String   | From value list |
 > | result    | Array | Result Object |
 
+##### Result Object Item
+
+> | name        |   data type  | description                                       |
+> |-------------|--------------|---------------------------------------------------|
+> | identificator      |   String   | ANCPI identifier |
+> | tip      |   String   | <ul><li>"Teren" - land area</li><li>"Clădire" - building</li><li>"Apartament" - flat</li></ul> |
+> | suprafata    | String | Area in square meters |
+> | stare    | String | <ul><li>"Activa" - carte funciara activa, se poate elibera online</li><li>"Sistata" - carte funciara Sistata, NU se poate elibera online</li></ul>  |
+> | graficGeoportal    | String | Optional - URL for geoportal map of the identified land registry |
+> | adresa    | String | Optional - Land registry address |
+> | nrVechiCarteFunciara    | String | Carte Funciara |
+> | nrVechiCadastral    | String | Numar Cadastru |
+> | nrTopografic    | String | Numar Topografic |
+
 ###### Example
 ```json
 {
