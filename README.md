@@ -426,7 +426,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "requestId": "jrurF1FhZ7nuyYAdy6Xm",
 "partnerRef":  "12345",
 "requestStatus":  "DoneANCPI",
-"docUri":  "https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"
+"docUri":  ["https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"]
 }
 ```
 ```json
@@ -434,7 +434,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "requestId": "jrurF1FhZ7nuyYAdy6Xm",
 "partnerRef":  "d5f3af8e",
 "requestStatus":  "Finalised",
-"docUri":  "https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218",
+"docUri":  ["https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"],
 "ancpiInvoiceUri":  "WALLET"
 }
 ```
@@ -503,7 +503,10 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 > | partnerReferenceId      |   String   | Partner's unique internal ID of request  |
 > | requestStatus      |   String   | Request Status  |
 > | ancpiOrderId | String | ANCPI Order ID |
+> | ancpiFlow | String | "AUTOMAT" or "MANUAL" |
+> | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
 > | docUri      |   Array [ String ]   | Direct download URIs for generated documents (present only if generated)  |
+> | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
 
 ###### Example
 ```json
@@ -511,7 +514,10 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 "partnerRef":  "d5f3af8e",
 "requestStatus":  "Finalised",
 "ancpiOrderId": "5950496",
-"docUri":  ["https://storage.googleapis.com/download/storage/v1/b/certificatconstatator-dev.appspot.com/o/_data1_portal_ccfil_certificate_2023_3_6_certificat0000-0000Q.pdf?generation=1678138325733513&alt=media"]
+"ancpiFlow" : "AUTOMAT",
+"accountBalance": "12",
+"docUri":  ["https://storage.googleapis.com/download/storage/v1/b/certificatconstatator-dev.appspot.com/o/_data1_portal_ccfil_certificate_2023_3_6_certificat0000-0000Q.pdf?generation=1678138325733513&alt=media"],
+"ancpiInvoiceUri":  "WALLET"
 }
 ```
 
