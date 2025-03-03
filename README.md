@@ -404,6 +404,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 > | partnerRef      | all |   String   | Partner's unique internal ID of request  |
 > | requestStatus      | all |   String   | Request Status  |
 > | ancpiOrderId | SentToANCPI | String | ANCPI Order ID |
+> | ancpiFlow | SentToANCPI | String | "AUTOMAT" or "MANUAL" |
 > | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
 > | docUri      | DoneANCPI,Finalised|   String   | Direct download URI for generated document (present only if generated)  |
 > | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
@@ -416,6 +417,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "partnerRef":  "12345",
 "requestStatus":  "SentToANCPI",
 "ancpiOrderId": "856012",
+"ancpiFlow" : "AUTOMAT",
 "accountBalance": "12"
 }
 ```
