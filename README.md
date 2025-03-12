@@ -406,9 +406,9 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 > | ancpiOrderId | SentToANCPI | String | ANCPI Order ID |
 > | ancpiOrderLink | SentToANCPI | String | ANCPI Direct Link |
 > | ancpiFlow | SentToANCPI | String | "AUTOMAT" or "MANUAL" |
-> | ancpiSolution | SentToANCPI | String | "ADMINS" or "RESPINS" |
+> | ancpiSolution | DoneANCPI,Finalised | String | "ADMINS" or "RESPINS" |
 > | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
-> | docUri      | DoneANCPI,Finalised|   Array [ String ]   | Direct download URI for generated document (present only if generated)  |
+> | docUri      | DoneANCPI,Finalised |   Array [ String ]   | Direct download URI for generated document (present only if generated)  |
 > | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
 
 ###### Examples
@@ -421,7 +421,6 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "ancpiOrderId": "856012",
 "ancpiOrderLink": "https://epay.ancpi.ro/epay/ShowOrderDetails.action?orderId=856012",
 "ancpiFlow": "AUTOMAT",
-"ancpiSolution": "ADMIS",
 "accountBalance": "12"
 }
 ```
@@ -430,6 +429,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "requestId": "jrurF1FhZ7nuyYAdy6Xm",
 "partnerRef":  "12345",
 "requestStatus":  "DoneANCPI",
+"ancpiSolution": "ADMIS",
 "docUri":  ["https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"]
 }
 ```
@@ -438,6 +438,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "requestId": "jrurF1FhZ7nuyYAdy6Xm",
 "partnerRef":  "d5f3af8e",
 "requestStatus":  "Finalised",
+"ancpiSolution": "ADMIS",
 "docUri":  ["https://firebasestorage.googleapis.com/v0/b/certificatconstatator-dev.appspot.com/o/2022_7_25_certificat273627-10S0Q.pdf?alt=media&token=ee42cf9c-c185-4291-9537-8bb518533218"],
 "ancpiInvoiceUri":  "WALLET"
 }
@@ -510,9 +511,9 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 > | ancpiOrderLink | String | ANCPI Direct Link |
 > | ancpiFlow | String | "AUTOMAT" or "MANUAL" |
 > | ancpiSolution | String | "ADMIS" or "RESPINS" |
-> | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
+> | accountBalance | String | ANCPI points balance, if applicable |
 > | docUri      |   Array [ String ]   | Direct download URIs for generated documents (present only if generated)  |
-> | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
+> | ancpiInvoiceUri | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
 
 ###### Example
 ```json
