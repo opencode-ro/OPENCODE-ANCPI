@@ -406,6 +406,7 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 > | ancpiOrderId | SentToANCPI | String | ANCPI Order ID |
 > | ancpiOrderLink | SentToANCPI | String | ANCPI Direct Link |
 > | ancpiFlow | SentToANCPI | String | "AUTOMAT" or "MANUAL" |
+> | ancpiSolution | SentToANCPI | String | "ADMINS" or "RESPINS" |
 > | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
 > | docUri      | DoneANCPI,Finalised|   Array [ String ]   | Direct download URI for generated document (present only if generated)  |
 > | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
@@ -419,7 +420,8 @@ curl -L 'https://$uri/api/partners/cancelRequest' \
 "requestStatus":  "SentToANCPI",
 "ancpiOrderId": "856012",
 "ancpiOrderLink": "https://epay.ancpi.ro/epay/ShowOrderDetails.action?orderId=856012",
-"ancpiFlow" : "AUTOMAT",
+"ancpiFlow": "AUTOMAT",
+"ancpiSolution": "ADMIS",
 "accountBalance": "12"
 }
 ```
@@ -507,6 +509,7 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 > | ancpiOrderId | String | ANCPI Order ID |
 > | ancpiOrderLink | String | ANCPI Direct Link |
 > | ancpiFlow | String | "AUTOMAT" or "MANUAL" |
+> | ancpiSolution | String | "ADMIS" or "RESPINS" |
 > | accountBalance | SentToANCPI | String | ANCPI points balance, if applicable |
 > | docUri      |   Array [ String ]   | Direct download URIs for generated documents (present only if generated)  |
 > | ancpiInvoiceUri | Finalised* | String | "WALLET" - Hardcoded value for partners using wallet | Direct download URI for ANCPI receipt (only for partners with self-invoice) |
@@ -518,7 +521,8 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 "requestStatus":  "Finalised",
 "ancpiOrderId": "5950496",
 "ancpiOrderLink": "https://epay.ancpi.ro/epay/ShowOrderDetails.action?orderId=856012",
-"ancpiFlow" : "AUTOMAT",
+"ancpiFlow": "AUTOMAT",
+"ancpiSolution": "ADMIS",
 "accountBalance": "12",
 "docUri":  ["https://storage.googleapis.com/download/storage/v1/b/certificatconstatator-dev.appspot.com/o/_data1_portal_ccfil_certificate_2023_3_6_certificat0000-0000Q.pdf?generation=1678138325733513&alt=media"],
 "ancpiInvoiceUri":  "WALLET"
