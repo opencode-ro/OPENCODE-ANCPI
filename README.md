@@ -534,6 +534,58 @@ curl -L 'https://$uri/api/partners/queryRequestStatus' \
 
 ------------------------------------------------------------------------------------------
 
+#### Query ANCPI status
+
+<details>
+ <summary><code>POST</code> <code><b>{uri}/api/partners/queryAncpiStatus</b></code> <code>(query ANCPI status)</code></summary>
+
+##### Endpoint
+
+> | Key      | Value               | description                                                           |
+> |-----------|-------------------------|-----------------------------------------------------------------------|
+> | uri      | String  | Provided by OpenCode (STAGING / PROD)  |
+
+
+##### Headers
+
+> | Key      | Value               | description                                                           |
+> |----------|---------------------|-----------------------------------------------------------------------|
+> | Authorization      | Basic Auth   | Provided by OpenCode  |
+> | X-OCD-Partner      | String   | Provided by OpenCode  |
+
+
+###### Example
+```bash
+curl -L 'https://$uri/api/partners/queryAncpiStatus' \
+-u '$user:$password' \
+-H 'X-OCD-Partner: $partnerId' 
+```
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`        | object (JSON)    |
+> | `401`         | `text/html;charset=utf-8`         | None  |
+
+
+##### Response Body
+
+> | name        |   data type  | description                                       |
+> |-------------|--------------|---------------------------------------------------|
+> | isAncpiActive      |   String   | "true" / "false" string values  |
+
+###### Example
+```json
+{
+"isAncpiActive": "true"
+}
+```
+
+</details>
+
+------------------------------------------------------------------------------------------
+
 
 #### Value Lists
 <details>
