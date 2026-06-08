@@ -126,7 +126,7 @@ curl -L 'https://$uri/api/partners/searchImobil' \
 > | judet      |  required | String   | County - From value list  |
 > | uat      |  required | String   | Administrative unit - From value list  |
 > | nrCf      |  required | String   | Carte Funciara  |
-> | nrCad      |  required | String   | Numar Cadastru  |
+> | nrCad      |  optional | String   | Numar Cadastru  |
 
 ###### Example
 ```bash
@@ -195,7 +195,7 @@ curl -L 'https://$uri/api/partners/validateCarteFunciara' \
 > | judet      |  required | String   | County - From value list  |
 > | uat      |  required | String   | Administrative unit - From value list  |
 > | nrCf      |  required | String   | Carte Funciara  |
-> | nrCad      |  required | String   | Numar Cadastru  |
+> | nrCad      |  optional | String   | Numar Cadastru  |
 
 ###### Example
 ```bash
@@ -266,7 +266,7 @@ curl -L 'https://$uri/api/partners/validateCarteFunciara' \
 > | judet      |  required | String   | County - From value list (Provided by OpenCode)  |
 > | uat      |  required | String   | Administrative unit - From value list (Provided by OpenCode)  |
 > | nrCf      |  required | String   | Carte Funciara  |
-> | nrCad      |  required | String   | Numar Cadastru  |
+> | nrCad      |  optional | String   | Numar Cadastru  |
 > | nrTopo      |  optional | String   | Numar Topografic  |
 
 ###### Example
